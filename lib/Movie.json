@@ -1,0 +1,116 @@
+{
+    "Movie": {
+    "M2R2zB9z789amnJG2m": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/THE%20FAMILY%20PLAN.jpg?alt=media&token=c8ffbdba-6c12-4832-87e9-fccef46bdc50",
+      "movieID":"1",
+      "movieName":"THE FAMILY PLAN",
+      "genre":"Action",
+      "youTubeID":"BXL-WQnjCCA",
+      "description":"When enemies from his past track him down, former elite government assassin Dan packs his wife, teen daughter, teen son, and 10-month-old baby into their minivan and takes off on an impromptu cross-country road trip to Las Vegas."
+    },
+    "N3E2zB9z4O0flnERt2k": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/The%20Fall%20Guy.jpg?alt=media&token=f50a127d-d4c0-407a-86b9-b162122a6f19",
+      "movieID":"2",
+      "movieName":"The Fall Guy",
+      "genre":"Action",
+      "youTubeID":"j7jPnwVGdZ8",
+      "description":"Following the subsequent crashes that caused a huge number of deaths, the security system of Boeing, an American aircraft manufacturer, was under question."
+    },
+    "N3E2zB9z4O0flnJFQTA": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/The%20Garfield.jpg?alt=media&token=4c544a05-efba-4944-b051-fad4426b2751",
+      "movieID":"3",
+      "movieName":"The Garfield",
+      "genre":"Comedy",
+      "youTubeID":"IKFQc1XdMXw",
+      "description":"The Garfield Movie is an upcoming American animated comedy film based on Jim Davis's comic strip Garfield, produced by Columbia Pictures and Alcon Entertainment, animated by DNEG Animation, and distributed by Sony Pictures Releasing."
+    },
+    "N3E2zB9z4O0flnJFyOB": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/THANKSGIVING.jpg?alt=media&token=53f264a2-747b-42d4-a623-ebacbbbdea43",
+      "movieID":"4",
+      "movieName":"THANKSGIVING",
+      "genre":"Horror",
+      "youTubeID":"KbU50SdL8zA",
+      "description":"An axe-wielding maniac terrorizes residents of Plymouth, Mass., after a Black Friday riot ends in tragedy. Picking off victims one by one, the seemingly random revenge killings soon become part of a larger, sinister plan."
+    },
+    "N3E2zB9z4O0flnJG2c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/Dunki%20Drop%201.jpg?alt=media&token=6f718a66-359d-44bf-a92c-af438a8335e0",
+      "movieID":"5",
+      "movieName":"Dunki Drop 1",
+      "genre":"Comedy",
+      "youTubeID":"LOzucm1jbzs",
+      "description":"Dunki is an upcoming Indian Hindi-language comedy-drama film based on an illegal immigration technique named, 'Donkey Flight'. It is directed by Rajkumar Hirani, who co-wrote the screenplay with Abhijat Joshi and Kanika Dhillon."
+    },
+    "N3E2zB9z4O0flnxDf3c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/Avatar%20the%20Last%20Airbender.jpg?alt=media&token=7772710f-4297-41bf-a55e-6d2351544505",
+      "movieID":"6",
+      "movieName":"Avatar the Last Airbender",
+      "genre":"Action",
+      "youTubeID":"waJKJW_XU90",
+      "description":"Four elemental nations are at war with each other and only the Avatar, master of all four elements, can restore peace. The new Avatar comes in the form of Aang who strives to fulfil his destiny."
+    },
+    "N3E2zB9z789amnJG2m": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/MeanGirl.jpg?alt=media&token=c972d75a-13f7-425b-b386-1a0ee1c86c65",
+      "movieID":"7",
+      "movieName":"Mean Girls",
+      "genre":"Drama",
+      "youTubeID":"fFtdbEgnUOk",
+      "description":"New student Cady Heron gets welcomed into the top of the social food chain by an elite group of popular girls called the Plastics, ruled by the conniving queen bee Regina George. However, when Cady makes the major misstep of falling for Regina's ex-boyfriend, she soon finds herself caught in their crosshairs."
+    },
+    "N3E2zB9z789amnLo1c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/FARREY.jpg?alt=media&token=0df14c41-2dfc-4f81-8b1f-3a30a37888ee",
+      "movieID":"8",
+      "movieName":"FARREY",
+      "genre":"Drama",
+      "youTubeID":"WUbl1870N7c",
+      "description":"After gaining admission into an elite school on scholarship, an orphan genius Niyati gets entangled in a cheating racket when some of her rich friends lure her into helping them cheat in exams through elaborate methods."
+    },
+    "N3E2zB9z789amnLol2c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/GHOSTBUSTERS%20FROZEN%20EMPIRE.jpg?alt=media&token=d71a2575-10bb-41f1-8d1b-feec78bc5e36",
+      "movieID":"9",
+      "movieName":"GHOSTBUSTERS: FROZEN EMPIRE",
+      "genre":"Comedy",
+      "youTubeID":"wFNK_KEmcWs",
+      "description":"The Spengler family returns to the iconic New York City firehouse where the original Ghostbusters have taken ghost-busting to the next level. When the discovery of an ancient artifact unleashes an evil force, Ghostbusters new and old must unite to protect their home and save the world from a second ice age."
+    },
+    "N3E2zB9z789amnLol3c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/Argylle.jpg?alt=media&token=aae8fe88-1a6c-48d5-9309-0876e4f1995a",
+      "movieID":"10",
+      "movieName":"Argylle",
+      "genre":"Thriller",
+      "youTubeID":"7mgu9mNZ8Hk",
+      "description":"Argylle, a super-spy, is drawn into a treasure hunt that takes him around the world. The secret agent's troubled past could jeopardise the mission."
+     },
+    "N3E2zB9z789amnLol4c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/GODZILLA%20MINUS%20ONE.jpg?alt=media&token=df0bd85c-c80b-43eb-89de-113cd581e709",
+      "movieID":"11",
+      "movieName":"GODZILLA MINUS ONE",
+      "genre":"Adventure",
+      "youTubeID":"VvSrHIX5a-0",
+      "description":"Japan is already devastated by the war when a new crisis emerges in the form of a giant monster."
+     },
+    "N3E2zB9z789amnLol5c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/Lift.jpg?alt=media&token=859e7352-efa2-4ba6-be13-d32115c49f75",
+      "movieID":"12",
+      "movieName":"Lift",
+      "genre":"Comedy",
+      "youTubeID":"m2L-Sa_6MU0",
+      "description":"A master thief is wooed by his ex-girlfriend and the FBI to pull off an impossible heist with his international crew on a 777 passenger flight from London to Zurich."
+       },
+    "N3E2zB9z789amnLol6c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/Kingdom%20of%20the%20Planet%20of%20the%20Apes.jpg?alt=media&token=d408e057-b138-4d92-8e58-0214d837efd9",
+      "movieID":"13",
+      "movieName":"Kingdom of the Planet of the Apes",
+      "genre":"Action",
+      "youTubeID":"NQ_HvTBaFoo",
+      "description":"Many years after the reign of Caesar, a young ape goes on a journey that will lead him to question everything he's been taught about the past and make choices that will define a future for apes and humans alike."
+     },
+    "N3E2zB9z789amnLol7c": {
+      "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/DAMSEL.jpg?alt=media&token=1661075b-57e6-461a-9069-f48f8bfd2a2f",
+      "movieID":"14",
+      "movieName":"DAMSEL",
+      "genre":"Drama",
+      "youTubeID":"9eN_AGX8GXk",
+      "description":"A young woman agrees to marry a handsome prince -- only to discover it was all a trap. She is thrown into a cave with a fire-breathing dragon and must rely solely on her wits and will to survive."
+      }
+  }
+}
