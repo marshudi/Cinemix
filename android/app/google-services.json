@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "869023165702",
+    "firebase_url": "https://cinemix-61acb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "cinemix-61acb",
+    "storage_bucket": "cinemix-61acb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869023165702:android:084b0391528cc6a9ba0287",
+        "android_client_info": {
+          "package_name": "com.example.cinemix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsCAw9gRfmjFdG3Art4jvNxuaDnLcyi-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
