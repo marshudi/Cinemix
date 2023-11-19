@@ -59,6 +59,7 @@ class _WelcomeState extends State<Welcome> {
                 ),
               ),
               const SizedBox(height: 30,),
+
               GestureDetector(
                 onTap: (){
                   Navigator.push(context,

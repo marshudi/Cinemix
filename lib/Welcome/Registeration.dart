@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cinemix/Welcome/UserModelClass.dart';
 import 'package:flutter/material.dart';
 import 'package:cinemix/Welcome/Login.dart';
@@ -24,6 +26,11 @@ class _RegisterationState extends State<Registeration> {
   DatabaseReference mydb = FirebaseDatabase.instance.ref("User");
 
   bool checkvalue = true;
+
+
+
+
+
 
 
   @override
@@ -105,28 +112,35 @@ class _RegisterationState extends State<Registeration> {
                               return "Last Name should contain only letters";
 
                             }
-                          }
+                          },
+
+
 
                       ),
                       TextFormField(
-                         controller: email,
-                         decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.check,color: Colors.grey,),
-                            label: Text('Email',style: TextStyle(
+                        controller: email,
+                        decoration: InputDecoration(
+                          suffixIcon: Icon(Icons.check, color: Colors.grey),
+                          label: Text(
+                            'Email',
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color:Color(0xff9f0046),
-                            ),)
+                              color: Color(0xff9f0046),
+                            ),
+                          ),
                         ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Please Enter your Email";
-                            }
-                            if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$').hasMatch(value)) {
-                              return "Please enter a valid email address";
-                            }
-
+                        validator: (value)  {
+                          if (value == null || value.isEmpty) {
+                            return "Please Enter your Email";
                           }
+                          if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$').hasMatch(value)) {
+                            return "Please enter a valid email address";
+                          }
+
+
+                        },
                       ),
+
                        TextFormField(
                          controller: password,
                         decoration: InputDecoration(
@@ -212,7 +226,30 @@ class _RegisterationState extends State<Registeration> {
                             context,
                             MaterialPageRoute(builder: (context) => Login()),
                           );
+                          return;
                         }
+                        // if(_formkey.currentState!.validate() && checkvalue) {
+                        //   //DataSnapshot snapshot = await mydb.orderByChild("email").equalTo(email.text).once();
+                        //   mydb.onValue.listen((event) {
+                        //     flag=0;
+                        //     for(final user in event.snapshot.children){
+                        //       Map<dynamic, dynamic> u1=
+                        //       user.value as Map<dynamic,dynamic>;
+                        //       if(u1['email'].toString().trim().compareTo(email.text.trim())==0){
+                        //         flag=1;
+                        //         var globalUserKey=user.key as String;
+                        //         var globalEmail=email.text;
+                        //         break;
+                        //       }
+                        //     }
+                        //     if(flag==1){
+                        //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email exists")));
+                        //     }
+                        //
+                        //   });
+                        // }
+
+
                         else{
                           //mydb.push().set("'username' : $uname");
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

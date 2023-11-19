@@ -143,7 +143,7 @@ class _LoginState extends State<Login> {
                                       builder: (context) => BottomNav()),
                                 );
                               }
-                              if("admin@cinemix.com"==email.text && "admin123"==password.text){
+                              if("admin@cinemix.com"==email.text && flag==1){
                                 // ScaffoldMessenger.of(context).showSnackBar(
                                 //     SnackBar(content: Text("admin login"))
                                 // );

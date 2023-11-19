@@ -32,6 +32,7 @@ class _BottomNavAdminState extends State<BottomNavAdmin> {
           HomeTab(),
           AdminPanel(),
           ProfileTab(),
+
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

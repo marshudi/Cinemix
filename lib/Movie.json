@@ -1,4 +1,13 @@
 {
+  "User": {
+    "M2R2zB9z789amnJG2m": {
+      "email": "admin@cinemix.com",
+      "firstName": "Admin",
+      "lastName": "CineMix",
+      "password": "admin1234"
+
+    }
+  },
     "Movie": {
     "M2R2zB9z789amnJG2m": {
       "image":"https://firebasestorage.googleapis.com/v0/b/cinemix-61acb.appspot.com/o/THE%20FAMILY%20PLAN.jpg?alt=media&token=c8ffbdba-6c12-4832-87e9-fccef46bdc50",

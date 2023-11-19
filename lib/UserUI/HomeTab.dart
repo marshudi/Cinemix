@@ -12,8 +12,8 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  DatabaseReference mydb = FirebaseDatabase.instance.ref().child("Movie");
-  Query movieQuery = FirebaseDatabase.instance.ref().child("Movie");
+   DatabaseReference mydb = FirebaseDatabase.instance.ref().child("Movie");
+   Query movieQuery = FirebaseDatabase.instance.ref().child("Movie");
   String selectedGenre = "All";
 
   @override
