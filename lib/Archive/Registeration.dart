@@ -28,10 +28,9 @@ class _RegisterationState extends State<Registeration> {
   bool checkvalue = true;
 
 
-  late int flag=0;
 
-  String? emailValidationResult;
-  bool isPasswordVisible = false;
+
+
 
 
   @override
@@ -115,6 +114,8 @@ class _RegisterationState extends State<Registeration> {
                             }
                           },
 
+
+
                       ),
                       TextFormField(
                         controller: email,
@@ -136,27 +137,14 @@ class _RegisterationState extends State<Registeration> {
                             return "Please enter a valid email address";
                           }
 
-                          return emailValidationResult;
-
 
                         },
                       ),
 
                        TextFormField(
-                           controller: password,
-                           obscureText: !isPasswordVisible,
-                           decoration: InputDecoration(
-                               suffixIcon: IconButton(
-                                 icon: Icon(
-                                   isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                                   color: Colors.grey,
-                                 ),
-                                 onPressed: () {
-                                   setState(() {
-                                     isPasswordVisible = !isPasswordVisible;
-                                   });
-                                 },
-                               ),
+                         controller: password,
+                        decoration: InputDecoration(
+                            suffixIcon: Icon(Icons.visibility_off,color: Colors.grey,),
                             label: Text('Password',style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color:Color(0xff9f0046),
@@ -173,19 +161,8 @@ class _RegisterationState extends State<Registeration> {
                       ),
                       TextFormField(
                         controller: cPassword,
-                          obscureText: !isPasswordVisible,
-                          decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                                  color: Colors.grey,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    isPasswordVisible = !isPasswordVisible;
-                                  });
-                                },
-                              ),
+                        decoration: InputDecoration(
+                            suffixIcon: Icon(Icons.visibility_off,color: Colors.grey,),
                             label: Text('Confirm Password',style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color:Color(0xff9f0046),
@@ -210,10 +187,14 @@ class _RegisterationState extends State<Registeration> {
                           setState(() {
                             checkvalue = val!;
                             if (checkvalue) {
-
+                              // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              //   content: Text("You have agreen to our terms"),
+                              // ));
 
                             } else {
-
+                              // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              //   content: Text("You have Unagreen to our Terms"),
+                              //));
                             }
                           });
                         },
@@ -232,52 +213,41 @@ class _RegisterationState extends State<Registeration> {
                         if (_formkey.currentState!.validate() && checkvalue) {
                           //DataSnapshot snapshot = await mydb.orderByChild("email").equalTo(email.text).once();
 
+                          User newUser=User(
+                              fName.text,
+                              lName.text,
+                              email.text,
+                              //gender, //no need to conver the gender to text is already converted
+                              password.text);
 
-                          mydb.onValue.listen((event) async {
-                            flag=0;
-                            for(final user in event.snapshot.children){
-                              Map<dynamic, dynamic> u1=
-                              user.value as Map<dynamic,dynamic>;
-                              if(u1['email'].toString().trim().compareTo(email.text.trim())==0){
-                                flag=1;
-                                var globalUserKey=user.key as String;
-                                var globalEmail=email.text;
-                                break;
-                              }
-                            }
-                            if(flag==1){
-                              setState(() {
-                                emailValidationResult =
-                                "Email already exists. Please register with a different email";
-                              });
+                          await mydb.push().set(newUser.toJson());
 
-                            }
-
-                            else{
-                              setState(() {
-                                emailValidationResult = null; // Reset the error message
-                              });
-                              User newUser=User(
-                                  fName.text,
-                                  lName.text,
-                                  email.text,
-                                  //gender, //no need to conver the gender to text is already converted
-                                  password.text);
-
-                              await mydb.push().set(newUser.toJson());
-
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(builder: (context) => Login()),
-                              );
-                              return;
-
-                            }
-
-                          });
-
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => Login()),
+                          );
+                          return;
                         }
-
+                        // if(_formkey.currentState!.validate() && checkvalue) {
+                        //   //DataSnapshot snapshot = await mydb.orderByChild("email").equalTo(email.text).once();
+                        //   mydb.onValue.listen((event) {
+                        //     flag=0;
+                        //     for(final user in event.snapshot.children){
+                        //       Map<dynamic, dynamic> u1=
+                        //       user.value as Map<dynamic,dynamic>;
+                        //       if(u1['email'].toString().trim().compareTo(email.text.trim())==0){
+                        //         flag=1;
+                        //         var globalUserKey=user.key as String;
+                        //         var globalEmail=email.text;
+                        //         break;
+                        //       }
+                        //     }
+                        //     if(flag==1){
+                        //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email exists")));
+                        //     }
+                        //
+                        //   });
+                        // }
 
 
                         else{
@@ -285,11 +255,7 @@ class _RegisterationState extends State<Registeration> {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text("You have agree to terms and condition"),
                           ));
-                          setState(() {
-                            emailValidationResult = null; // Reset the error message
-                          });
                         }
-
                       },
 
 

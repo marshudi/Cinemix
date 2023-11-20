@@ -22,6 +22,7 @@ class _LoginState extends State<Login> {
   TextEditingController password=TextEditingController();
   DatabaseReference mydb = FirebaseDatabase.instance.ref("User");
   late int flag=0;
+  bool isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,8 +85,19 @@ class _LoginState extends State<Login> {
 
                       TextFormField(
                         controller: password,
+                        obscureText: !isPasswordVisible,
                         decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.visibility_off,color: Colors.grey,),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  isPasswordVisible = !isPasswordVisible;
+                                });
+                              },
+                            ),
                             label: Text('Password',style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color:Color(0xff9f0046),
@@ -132,10 +144,7 @@ class _LoginState extends State<Login> {
                                 }
                               }
                               if(flag==1){
-                                
-                                // ScaffoldMessenger.of(context).showSnackBar(
-                                //   SnackBar(content: Text("Logged in"))
-                                // );
+
 
                                 Navigator.pushReplacement(
                                   context,
@@ -144,9 +153,7 @@ class _LoginState extends State<Login> {
                                 );
                               }
                               if("admin@cinemix.com"==email.text && flag==1){
-                                // ScaffoldMessenger.of(context).showSnackBar(
-                                //     SnackBar(content: Text("admin login"))
-                                // );
+
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
