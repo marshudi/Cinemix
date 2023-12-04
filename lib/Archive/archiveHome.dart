@@ -1,4 +1,4 @@
-import 'package:cinemix/UserUI/Movie.dart';
+import 'package:cinemix/UserUI/MoviePage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -188,7 +188,7 @@ class _HomeTabState extends State<HomeTab> {
     return InkWell(
       onTap: (){
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Movie(
+            context, MaterialPageRoute(builder: (context) => MoviePage(
           movieImage: movie["image"],
           movieID: movie["movieID"],
           movieName: movie["movieName"],

@@ -5,7 +5,16 @@ import 'package:cinemix/UserUI//ProfileTab.dart';
 import 'package:flutter/material.dart';
 
 class BottomNav extends StatefulWidget {
-  const BottomNav({super.key});
+   final String userKey,email, firstName, lastName, password;
+  const BottomNav({
+    Key? key,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.password,
+    required this.userKey,
+
+  }) : super(key: key);
 
   @override
   State<BottomNav> createState() => _BottomNavState();
@@ -17,20 +26,20 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Color.fromRGBO(0, 23, 30, 1.0),
-          flexibleSpace: Container(
-              alignment: Alignment.bottomCenter,
-              child: Image(
-                height: 55,
-                image: AssetImage('lib/Assets/Images/banner.png'),
-              ))),
+
       body: IndexedStack(
         index: _currentIndex,
         children: [
           HomeTab(),
           //SearchTab(),
-          ProfileTab(),
+          ProfileTab(
+            email: widget.email,
+            firstName: widget.firstName,
+            lastName: widget.lastName,
+            password: widget.password,
+            userKey: widget.userKey,
+
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

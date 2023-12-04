@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:cinemix/AdminUI//Movie.dart';
+import 'package:cinemix/AdminUI//MoviePage.dart';
+import 'package:cinemix/AdminUI/SearchTab.dart';
 
 
 
@@ -23,6 +25,34 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(0, 23, 30, 1.0),
+        automaticallyImplyLeading: false,
+        flexibleSpace: Container(
+          alignment: Alignment.bottomCenter,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image(
+                height: 55,
+                image: AssetImage('lib/Assets/Images/banner.png'),
+              ),
+              IconButton(
+                icon: Icon(Icons.search, color: Colors.white),
+                onPressed: () {
+                  // Open a new screen for searching
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchTab(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Color.fromRGBO(2, 41, 63, 1.0),
       body: Padding(
         padding: const EdgeInsets.only(top: 12.0),
@@ -114,6 +144,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               // Check if the item's genre matches the selected genre before displaying it
               if (selectedGenre == "All" || movie['genre'] == selectedGenre) {
                 return MovieCard(movie: movie);
@@ -159,6 +190,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" || movie['genre'] == selectedGenre) {
                 return MovieCard(movie: movie);
               } else {
@@ -206,6 +238,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Action" ||  selectedGenre == "Action" && movie['genre'] == "Action") {
                 return MovieCard(movie: movie);
               } else {
@@ -252,6 +285,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Comedy" ||  selectedGenre == "Comedy" && movie['genre'] == "Comedy") {
                 return MovieCard(movie: movie);
               } else {
@@ -297,6 +331,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Horror" ||  selectedGenre == "Horror" && movie['genre'] == "Horror") {
                 return MovieCard(movie: movie);
               } else {
@@ -341,6 +376,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Drama" ||  selectedGenre == "Drama" && movie['genre'] == "Drama") {
                 return MovieCard(movie: movie);
               } else {
@@ -362,13 +398,14 @@ class _HomeTabState extends State<HomeTab> {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Movie(
+            context, MaterialPageRoute(builder: (context) => MoviePage(
           movieImage: movie["image"],
           movieID: movie["movieID"],
           movieName: movie["movieName"],
           movieGenre: movie["genre"],
           youID: movie["youTubeID"],
           movieDesc: movie["description"],
+          movieKey:movie["key"],
         )));
       },
       child: Column(

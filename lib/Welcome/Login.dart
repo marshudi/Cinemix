@@ -17,10 +17,44 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+
+
+  // void _navigateToBottomNav(Map<dynamic, dynamic> user) {
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => BottomNav(
+  //         email: user["email"],
+  //         firstName: user["firstName"],
+  //         lastName: user["movieName"],
+  //         password: user["password"],
+  //       ),
+  //     ),
+  //   );
+  // }
+  //
+  // void _navigateToBottomNavAdmin(Map<dynamic, dynamic> user) {
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => BottomNavAdmin(
+  //         email: user["email"],
+  //         firstName: user["firstName"],
+  //         lastName: user["movieName"],
+  //         password: user["password"],
+  //       ),
+  //     ),
+  //   );
+  // }
+
   final _formkey = GlobalKey<FormState>();
   TextEditingController email=TextEditingController();
   TextEditingController password=TextEditingController();
   DatabaseReference mydb = FirebaseDatabase.instance.ref("User");
+
+  List<Map<dynamic, dynamic>> users1 = [];
+
   late int flag=0;
   bool isPasswordVisible = false;
   @override
@@ -129,49 +163,77 @@ class _LoginState extends State<Login> {
                       GestureDetector(
                         onTap: () async {
                           if (_formkey.currentState!.validate()) {
-                            //DataSnapshot snapshot = await mydb.orderByChild("email").equalTo(email.text).once();
                             mydb.onValue.listen((event) {
-                              flag=0;
-                              for(final user in event.snapshot.children){
-                                Map<dynamic, dynamic> u1=
-                                    user.value as Map<dynamic,dynamic>;
-                                if(u1['email'].toString().trim().compareTo(email.text.trim())==0 &&
-                                    u1['password'].toString().trim().compareTo(password.text.trim())==0){
-                                  flag=1;
-                                  var globalUserKey=user.key as String;
-                                  var globalEmail=email.text;
+                              flag = 0;
+                              for (final user in event.snapshot.children) {
+                                Map<dynamic, dynamic> u1 = user.value as Map<dynamic, dynamic>;
+                                u1['key'] = user.key;
+                                if (u1['email'].toString().trim().compareTo(email.text.trim()) == 0 &&
+                                    u1['password'].toString().trim().compareTo(password.text.trim()) == 0) {
+                                  flag = 1;
+                                  // Directly use the user details from u1
+                                  var globalUserKey = user.key as String;
+                                  var globalEmail = email.text;
+                                  if ("admin@cinemix.com" == email.text && flag == 1) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BottomNavAdmin(
+                                          email: u1["email"],
+                                          firstName: u1["firstName"],
+                                          lastName: u1["lastName"],
+                                          password: u1["password"],
+                                          userKey: u1['key'],
+                                        ),
+                                      ),
+                                    );
+
+                                    ///////////////For Testing purpose/////////////////
+                                    print("####################");
+                                    print(u1["email"]);
+                                    print(u1["firstName"]);
+                                    print(u1["lastName"]);
+                                    print(u1["password"]);
+                                    print(u1['key']);
+
+
+                                    print("####################");
+                                    /////////////////////////////////////////
+
+                                  } else {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BottomNav(
+                                          email: u1["email"],
+                                          firstName: u1["firstName"],
+                                          lastName: u1["lastName"],
+                                          password: u1["password"],
+                                          userKey: u1['key'],
+                                        ),
+                                      ),
+                                    );
+                                    ///////////////For Testing purpose/////////////////
+                                    print("####################");
+                                    print(u1["email"]);
+                                    print(u1["firstName"]);
+                                    print(u1["lastName"]);
+                                    print(u1["password"]);
+                                    print(u1['key']);
+                                    print("####################");
+                                    /////////////////////////////////////////
+                                  }
                                   break;
                                 }
                               }
-                              if(flag==1){
-
-
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BottomNav()),
-                                );
-                              }
-                              if("admin@cinemix.com"==email.text && flag==1){
-
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BottomNavAdmin()),
-                                );
-                              }
-                              else{
+                              if (flag != 1) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text("Login Failed, please check your email and password!"))
+                                  SnackBar(content: Text("Login Failed, please check your email and password!")),
                                 );
                               }
                             });
-
-                            
-                          }
-
-                          else{
-
+                          } else {
+                            // Form validation failed
                           }
                         },
                         child: Container(
@@ -180,19 +242,24 @@ class _LoginState extends State<Login> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             gradient: const LinearGradient(
-                                colors: [
-                                  Color(0xff9f0046),
-                                  Color(0xff024570),
-                                ]
+                              colors: [
+                                Color(0xff9f0046),
+                                Color(0xff024570),
+                              ],
                             ),
                           ),
-                          child: const Center(child: Text('SIGN IN',style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.white
-                          ),),),
-                      ),
+                          child: const Center(
+                            child: Text(
+                              'SIGN IN',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
+                        ),
+                      ),
                       const SizedBox(height: 150,),
                       Align(
                         alignment: Alignment.bottomCenter,

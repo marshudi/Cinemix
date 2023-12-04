@@ -89,7 +89,7 @@ class _RegisterationState extends State<Registeration> {
                             if (value == null || value.isEmpty) {
                               return "Please Enter your First Name";
                             }
-                            if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+                            if (!RegExp(r'^[a-zA-Z]+(?: [a-zA-Z]+)*$').hasMatch(value)) {
                               return "First Name should contain only letters";
                               
                             }  
@@ -109,10 +109,11 @@ class _RegisterationState extends State<Registeration> {
                             if (value == null || value.isEmpty) {
                               return "Please Enter your Last Name";
                             }
-                            if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+                            if (!RegExp(r'^[a-zA-Z]+(?: [a-zA-Z]+)*$').hasMatch(value)) {
                               return "Last Name should contain only letters";
-
                             }
+
+
                           },
 
                       ),

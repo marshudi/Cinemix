@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:cinemix/UserUI/Movie.dart';
+import 'package:cinemix/UserUI/MoviePage.dart';
+import 'package:cinemix/UserUI/SearchTab.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -12,13 +13,41 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-   DatabaseReference mydb = FirebaseDatabase.instance.ref().child("Movie");
-   Query movieQuery = FirebaseDatabase.instance.ref().child("Movie");
+  DatabaseReference mydb = FirebaseDatabase.instance.ref().child("Movie");
+  Query movieQuery = FirebaseDatabase.instance.ref().child("Movie");
   String selectedGenre = "All";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(0, 23, 30, 1.0),
+        automaticallyImplyLeading: false,
+        flexibleSpace: Container(
+          alignment: Alignment.bottomCenter,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image(
+                height: 55,
+                image: AssetImage('lib/Assets/Images/banner.png'),
+              ),
+              IconButton(
+                icon: Icon(Icons.search, color: Colors.white),
+                onPressed: () {
+                  // Open a new screen for searching
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchTab(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Color.fromRGBO(2, 41, 63, 1.0),
       body: Padding(
         padding: const EdgeInsets.only(top: 12.0),
@@ -358,7 +387,7 @@ class _HomeTabState extends State<HomeTab> {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Movie(
+            context, MaterialPageRoute(builder: (context) => MoviePage(
           movieImage: movie["image"],
           movieID: movie["movieID"],
           movieName: movie["movieName"],
