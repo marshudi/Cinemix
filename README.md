@@ -46,7 +46,7 @@ Cinemix is tailored for movie enthusiasts who prefer the convenience of streamin
 
 This project proposal outlines the development of the "Cinemix" movie streaming and administration application using Flutter. It addresses the challenges of user-friendly movie streaming and efficient movie library management.
 
-
+#
 
 ## Dependencies Used
 
