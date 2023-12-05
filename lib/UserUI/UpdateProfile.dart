@@ -223,7 +223,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                         Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(builder: (context) => BottomNav(
-                                            email: widget.email,
+                                            email: email.text,
                                             firstName: fName.text,
                                             lastName: lName.text,
                                             password: widget.password,

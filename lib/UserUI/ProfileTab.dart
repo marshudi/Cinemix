@@ -137,7 +137,7 @@ class _ProfileTabState extends State<ProfileTab> {
                                     lastName: widget.lastName,
                                     password: widget.password,
                                     userKey: widget.userKey,
-                                    image: widget.image,
+                                    image: selectedAvatar.toString(),
                                   )));
                         },
                         child: Text("Edit Profile"),
@@ -163,7 +163,7 @@ class _ProfileTabState extends State<ProfileTab> {
                                 lastName: widget.lastName,
                                 password: widget.password,
                                 userKey: widget.userKey,
-                                image: widget.image,
+                                image: selectedAvatar.toString(),
                               ),
                             ),
                           );

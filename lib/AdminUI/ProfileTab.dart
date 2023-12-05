@@ -138,7 +138,7 @@ class _ProfileTabState extends State<ProfileTab> {
                                 lastName: widget.lastName,
                                 password: widget.password,
                                 userKey: widget.userKey,
-                                image: widget.image,
+                                image: selectedAvatar.toString(),
                               ),
                             ),
                           );
