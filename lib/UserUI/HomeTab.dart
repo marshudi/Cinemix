@@ -4,9 +4,19 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:cinemix/UserUI/MoviePage.dart';
 import 'package:cinemix/UserUI/SearchTab.dart';
+import 'package:intl/intl.dart';
+import 'dart:async';
+
+
 
 class HomeTab extends StatefulWidget {
-  const HomeTab({super.key});
+  final String  userKey;
+  const HomeTab({
+    Key? key,
+
+    required this.userKey,
+
+  }) : super(key: key);
 
   @override
   State<HomeTab> createState() => _HomeTabState();
@@ -16,6 +26,14 @@ class _HomeTabState extends State<HomeTab> {
   DatabaseReference mydb = FirebaseDatabase.instance.ref().child("Movie");
   Query movieQuery = FirebaseDatabase.instance.ref().child("Movie");
   String selectedGenre = "All";
+
+
+  DatabaseReference myDataBase = FirebaseDatabase.instance.ref("User");
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +68,13 @@ class _HomeTabState extends State<HomeTab> {
       ),
       backgroundColor: Color.fromRGBO(2, 41, 63, 1.0),
       body: Padding(
+
         padding: const EdgeInsets.only(top: 12.0),
         child: ListView(
           children: <Widget>[
             // Genre Chips
             Container(
+
               height: 40.0,
               width: double.infinity,
               child: ListView(
@@ -184,6 +204,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" || movie['genre'] == selectedGenre) {
                 return MovieCard(movie: movie);
               } else {
@@ -231,6 +252,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Action" ||  selectedGenre == "Action" && movie['genre'] == "Action") {
                 return MovieCard(movie: movie);
               } else {
@@ -277,6 +299,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Comedy" ||  selectedGenre == "Comedy" && movie['genre'] == "Comedy") {
                 return MovieCard(movie: movie);
               } else {
@@ -322,6 +345,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Horror" ||  selectedGenre == "Horror" && movie['genre'] == "Horror") {
                 return MovieCard(movie: movie);
               } else {
@@ -366,6 +390,7 @@ class _HomeTabState extends State<HomeTab> {
             query: sectionQuery,
             itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
               Map movie = snapshot.value as Map;
+              movie['key']=snapshot.key;
               if (selectedGenre == "All" && movie['genre'] == "Drama" ||  selectedGenre == "Drama" && movie['genre'] == "Drama") {
                 return MovieCard(movie: movie);
               } else {
@@ -394,7 +419,10 @@ class _HomeTabState extends State<HomeTab> {
           movieGenre: movie["genre"],
           youID: movie["youTubeID"],
           movieDesc: movie["description"],
+
+
         )));
+        saveUserFeeds(movie);
       },
       child: Column(
         children: <Widget>[
@@ -417,4 +445,30 @@ class _HomeTabState extends State<HomeTab> {
       ),
     );
   }
+
+
+
+  void saveUserFeeds(Map movie) {
+    // myDataBase.child(widget.userKey).child("total").child("total").once().then((DataSnapshot snapshot) {
+
+
+
+    final feedJson = {
+      "image": movie["image"].toString(),
+      "movieID": movie["movieID"].toString(),
+      "movieName": movie["movieName"].toString(),
+      "genre": movie["genre"].toString(),
+      "youTubeID": movie["youTubeID"].toString(),
+      "description": movie["description"].toString(),
+      "time": DateTime.now().toIso8601String(),
+
+
+    };
+    // to save my customer order
+    myDataBase.child(widget.userKey).child("logs").push().set(feedJson);
+  }
+
+
+
+
 }

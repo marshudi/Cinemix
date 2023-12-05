@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class BottomNavAdmin extends StatefulWidget {
 
 
-  final String userKey,email, firstName, lastName, password;
+  final String  image,userKey,email, firstName, lastName, password;
   const BottomNavAdmin({
     Key? key,
     required this.email,
@@ -16,6 +16,8 @@ class BottomNavAdmin extends StatefulWidget {
     required this.lastName,
     required this.password,
     required this.userKey,
+    required this.image,
+
 
   }) : super(key: key);
 
@@ -41,6 +43,8 @@ class _BottomNavAdminState extends State<BottomNavAdmin> {
             lastName: widget.lastName,
             password: widget.password,
             userKey: widget.userKey,
+            image: widget.image,
+
           ),
 
         ],

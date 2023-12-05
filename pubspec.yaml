@@ -28,9 +28,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  intl: ^0.18.1
   youtube_player_flutter: ^8.1.1 # for movie.dar playing video
-  uuid: ^4.2.1 # for admin to generate id for movies
-  image_picker: ^1.0.4 # for admin to pick image for movies
   flutter_form_builder: ^9.1.1
   firebase_database: ^10.1.1
   firebase_core: ^2.10.0
@@ -75,6 +74,7 @@ flutter:
   assets:
     - lib/Assets/Images/
     - assets/Movies/
+    - lib/Assets/profiles/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

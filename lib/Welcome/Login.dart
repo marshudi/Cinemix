@@ -20,33 +20,6 @@ class _LoginState extends State<Login> {
 
 
 
-  // void _navigateToBottomNav(Map<dynamic, dynamic> user) {
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => BottomNav(
-  //         email: user["email"],
-  //         firstName: user["firstName"],
-  //         lastName: user["movieName"],
-  //         password: user["password"],
-  //       ),
-  //     ),
-  //   );
-  // }
-  //
-  // void _navigateToBottomNavAdmin(Map<dynamic, dynamic> user) {
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => BottomNavAdmin(
-  //         email: user["email"],
-  //         firstName: user["firstName"],
-  //         lastName: user["movieName"],
-  //         password: user["password"],
-  //       ),
-  //     ),
-  //   );
-  // }
 
   final _formkey = GlobalKey<FormState>();
   TextEditingController email=TextEditingController();
@@ -179,6 +152,7 @@ class _LoginState extends State<Login> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => BottomNavAdmin(
+                                          image: u1["image"],
                                           email: u1["email"],
                                           firstName: u1["firstName"],
                                           lastName: u1["lastName"],
@@ -205,6 +179,7 @@ class _LoginState extends State<Login> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => BottomNav(
+                                          image: u1["image"],
                                           email: u1["email"],
                                           firstName: u1["firstName"],
                                           lastName: u1["lastName"],

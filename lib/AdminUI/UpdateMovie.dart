@@ -50,8 +50,10 @@ class _UpdateMovieState extends State<UpdateMovie> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(0, 23, 30, 1.0),
         title: Text('Update Movie'),
       ),
+      backgroundColor: Color.fromRGBO(191, 206, 206, 1.0),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: FormBuilder(
@@ -94,7 +96,7 @@ class _UpdateMovieState extends State<UpdateMovie> {
                 decoration: InputDecoration(labelText: 'Description'),
                 validator: (value){
                   if (value == null || value.isEmpty) {
-                    return "Please Enter Movie Name";
+                    return "Please Enter Movie Description";
                   }
                 },
               ),
@@ -105,7 +107,7 @@ class _UpdateMovieState extends State<UpdateMovie> {
                 decoration: InputDecoration(labelText: 'Image Link'),
                 validator: (value){
                   if (value == null || value.isEmpty) {
-                    return "Please Enter Movie Name";
+                    return "Please Enter an Image URL";
                   }
                 },
               ),
@@ -116,7 +118,7 @@ class _UpdateMovieState extends State<UpdateMovie> {
                 decoration: InputDecoration(labelText: 'YouTube ID'),
                 validator: (value){
                   if (value == null || value.isEmpty) {
-                    return "Please Enter Movie Name";
+                    return "Please Enter The YouTube ID of the movie";
                   }
                 },
               ),
@@ -128,6 +130,15 @@ class _UpdateMovieState extends State<UpdateMovie> {
                   }
                 },
                 child: Text('Update Movie'),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 48.0),
+                  backgroundColor: Color.fromRGBO(0, 96, 129, 1.0), // Set your desired button background color
+                  onPrimary: Colors.white, // Set the text color
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0), // Set the border radius
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 16.0), // Set vertical padding
+                ),
               ),
             ],
           ),

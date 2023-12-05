@@ -1,11 +1,12 @@
 import 'package:cinemix/UserUI//HomeTab.dart';
 import 'package:cinemix/UserUI//ProfileTab.dart';
+import 'package:cinemix/UserUI/FeedsTab.dart';
 
 
 import 'package:flutter/material.dart';
 
 class BottomNav extends StatefulWidget {
-   final String userKey,email, firstName, lastName, password;
+   final String  image,userKey,email, firstName, lastName, password;
   const BottomNav({
     Key? key,
     required this.email,
@@ -13,6 +14,8 @@ class BottomNav extends StatefulWidget {
     required this.lastName,
     required this.password,
     required this.userKey,
+    required this.image,
+
 
   }) : super(key: key);
 
@@ -30,14 +33,16 @@ class _BottomNavState extends State<BottomNav> {
       body: IndexedStack(
         index: _currentIndex,
         children: [
-          HomeTab(),
-          //SearchTab(),
+          HomeTab(userKey: widget.userKey),
+          FeedsTab(userKey: widget.userKey),
           ProfileTab(
             email: widget.email,
             firstName: widget.firstName,
             lastName: widget.lastName,
             password: widget.password,
             userKey: widget.userKey,
+            image: widget.image,
+
 
           ),
         ],
@@ -64,6 +69,10 @@ class _BottomNavState extends State<BottomNav> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'History',
           ),
 
           BottomNavigationBarItem(

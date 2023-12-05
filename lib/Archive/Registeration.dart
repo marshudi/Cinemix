@@ -214,11 +214,16 @@ class _RegisterationState extends State<Registeration> {
                           //DataSnapshot snapshot = await mydb.orderByChild("email").equalTo(email.text).once();
 
                           User newUser=User(
+                              "default",
                               fName.text,
                               lName.text,
                               email.text,
                               //gender, //no need to conver the gender to text is already converted
-                              password.text);
+                              password.text
+
+
+
+                                                    );
 
                           await mydb.push().set(newUser.toJson());
 
@@ -228,26 +233,7 @@ class _RegisterationState extends State<Registeration> {
                           );
                           return;
                         }
-                        // if(_formkey.currentState!.validate() && checkvalue) {
-                        //   //DataSnapshot snapshot = await mydb.orderByChild("email").equalTo(email.text).once();
-                        //   mydb.onValue.listen((event) {
-                        //     flag=0;
-                        //     for(final user in event.snapshot.children){
-                        //       Map<dynamic, dynamic> u1=
-                        //       user.value as Map<dynamic,dynamic>;
-                        //       if(u1['email'].toString().trim().compareTo(email.text.trim())==0){
-                        //         flag=1;
-                        //         var globalUserKey=user.key as String;
-                        //         var globalEmail=email.text;
-                        //         break;
-                        //       }
-                        //     }
-                        //     if(flag==1){
-                        //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email exists")));
-                        //     }
-                        //
-                        //   });
-                        // }
+
 
 
                         else{

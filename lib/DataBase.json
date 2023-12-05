@@ -1,14 +1,12 @@
 {
   "User": {
     "M2R2zB9z789amnJG2m": {
-      "email": "admin@cinemix.com",
-      "image": "default",
+      "image":"lib/Assets/profiles/default.jpg",
       "firstName": "Admin",
       "lastName": "CineMix",
-      "password": "admin1234",
-      "logs": {
-        
-      }
+      "email": "admin@cinemix.com",
+      "password": "admin1234"
+      
 
     }
   },

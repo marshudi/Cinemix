@@ -6,7 +6,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:cinemix/UserUI/ProfileTab.dart';
 
 class UpdateProfile extends StatefulWidget {
-  final String userKey,email, firstName, lastName, password;
+  final String image,userKey,email, firstName, lastName, password;
 
   const UpdateProfile({
     Key? key,
@@ -15,6 +15,8 @@ class UpdateProfile extends StatefulWidget {
     required this.lastName,
     required this.password,
     required this.userKey,
+    required this.image,
+
   }) : super(key: key);
   @override
   State<UpdateProfile> createState() => _UpdateProfileState();
@@ -104,7 +106,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                         0xff4d4d4d)), // Set the default line color
                                   ),
                                   suffixIcon: Icon(Icons.check,color: Colors.grey,),
-                                  label: Text('Last Name',style: TextStyle(
+                                  label: Text('First Name',style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color:Color(0xfff16a9b),
                                   ),)
@@ -194,7 +196,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     for(final user in event.snapshot.children){
                                       Map<dynamic, dynamic> u1=
                                       user.value as Map<dynamic,dynamic>;
-                                      if(u1['email'].toString().trim().compareTo(email.text.trim())==0){
+                                      if(u1['email'].toString().trim().compareTo(email.text.trim())==0 && widget.email!=email.text){
                                         flag=1;
                                         var globalUserKey=user.key as String;
                                         var globalEmail=email.text;
@@ -220,12 +222,14 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       }).then((_) {
                                         Navigator.pushReplacement(
                                           context,
-                                          MaterialPageRoute(builder: (context) => BottomNav(                    email: widget.email,
+                                          MaterialPageRoute(builder: (context) => BottomNav(
+                                            email: widget.email,
                                             firstName: fName.text,
-                                            //email: email.text,
                                             lastName: lName.text,
                                             password: widget.password,
-                                            userKey: widget.userKey,)),
+                                            userKey: widget.userKey,
+                                            image: widget.image,
+                                           )),
                                         ); // Close the update page after updating
                                       }).catchError((error) {
                                         print('Error updating movie: $error');
@@ -242,10 +246,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
 
                                 else{
-                                  //mydb.push().set("'username' : $uname");
-                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                    content: Text("You have agree to terms and condition"),
-                                  ));
+
                                   setState(() {
                                     emailValidationResult = null; // Reset the error message
                                   });

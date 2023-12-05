@@ -7,7 +7,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 
 class UpdatePassword extends StatefulWidget {
-  final String userKey,email, firstName, lastName, password;
+  final String image,userKey,email, firstName, lastName, password;
 
   const UpdatePassword({
     Key? key,
@@ -16,6 +16,8 @@ class UpdatePassword extends StatefulWidget {
     required this.lastName,
     required this.password,
     required this.userKey,
+    required this.image,
+
   }) : super(key: key);
   @override
   State<UpdatePassword> createState() => _UpdatePasswordState();
@@ -235,7 +237,9 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                                             firstName: widget.firstName,
                                             lastName: widget.lastName,
                                             password: newPassword.text,
-                                            userKey: widget.userKey,)),
+                                            userKey: widget.userKey,
+                                            image: widget.image,
+                                         )),
                                         ); // Close the update page after updating
                                       }).catchError((error) {
                                         print('Error updating movie: $error');
@@ -274,29 +278,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                // children: [
-                                //   Text(
-                                //     "Don't have an account?",
-                                //     style: TextStyle(
-                                //       fontWeight: FontWeight.bold,
-                                //       color: Colors.grey,
-                                //     ),
-                                //   ),
-                                //   // InkWell(
-                                //   //   onTap: () {
-                                //   //     // Navigate to the SignupPage when "Sign up" is clicked.
-                                //   //     Navigator.push(context, MaterialPageRoute(builder: (context) => ()));
-                                //   //   },
-                                //   //   child: Text(
-                                //   //     "Sign up",
-                                //   //     style: TextStyle(
-                                //   //       fontWeight: FontWeight.bold,
-                                //   //       fontSize: 17,
-                                //   //       color: Colors.black,
-                                //   //     ),
-                                //   //   ),
-                                //   // ),
-                                // ],
+
                               ),
                             ),
                           ],

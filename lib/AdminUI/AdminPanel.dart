@@ -97,10 +97,10 @@ class _AdminPanelState extends State<AdminPanel> {
                   if (value == null || value.isEmpty) {
                     return "Please Enter Image URL";
                   }
-                  if (!RegExp(r'^https?:\/\/.*\.(png|jpg|jpeg|gif|bmp)$',
-                    caseSensitive: false).hasMatch(value)) {
-                    return 'Enter a valid image URL';
-                  }
+                  // if (!RegExp(r'^https?:\/\/.*\.(png|jpg|jpeg|gif|bmp)$',
+                  //   caseSensitive: false).hasMatch(value)) {
+                  //   return 'Enter a valid image URL';
+                  // }
                 },
               ),
               SizedBox(height: 16.0),

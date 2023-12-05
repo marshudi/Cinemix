@@ -1,15 +1,20 @@
+import 'package:cinemix/AdminUI/UpdatePassword.dart';
 import 'package:flutter/material.dart';
 
 import '../Welcome/Welcome.dart';
 
 class ProfileTab extends StatefulWidget {
-  final String email, firstName, lastName, password;
+  final String image,userKey,email, firstName, lastName, password;
+
   const ProfileTab({
     Key? key,
     required this.email,
     required this.firstName,
     required this.lastName,
     required this.password,
+    required this.userKey,
+    required this.image,
+
   }) : super(key: key);
 
 
@@ -37,11 +42,13 @@ class _ProfileTabState extends State<ProfileTab> {
         ),
       ),
       body: Center(
+
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
               CircleAvatar(
                 radius: 60,
                 backgroundColor: Colors.white,
@@ -70,33 +77,27 @@ class _ProfileTabState extends State<ProfileTab> {
               ),
               SizedBox(height: 40),
 
-              // ElevatedButton(
-              //
-              //   onPressed: () {
-              //     // Add functionality for editing profile
-              //   },
-              //   child: Text("Edit Profile"),
-              //   style: ElevatedButton.styleFrom(
-              //     minimumSize: Size(double.infinity, 48.0),
-              //     backgroundColor: Color.fromRGBO(0, 96, 129, 1.0), // Set your desired button background color
-              //     onPrimary: Colors.white, // Set the text color
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(8.0), // Set the border radius
-              //     ),
-              //     padding: EdgeInsets.symmetric(vertical: 16.0), // Set vertical padding
-              //   ),
-              // ),
-              // SizedBox(height: 20),
+
 
               ElevatedButton(
 
                 onPressed: () {
                   // Add functionality for editing profile
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => UpdatePassword(
+                    email: widget.email,
+                    firstName: widget.firstName,
+                    lastName: widget.lastName,
+                    password: widget.password,
+                    userKey: widget.userKey,
+                    image: widget.image,
+
+                  )));
                 },
                 child: Text("Change Password"),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 48.0),
-                  backgroundColor: Color.fromRGBO(185, 100, 0, 1.0), // Set your desired button background color
+                  backgroundColor: Color.fromRGBO(86, 109, 203, 1.0), // Set your desired button background color
                   onPrimary: Colors.white, // Set the text color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0), // Set the border radius

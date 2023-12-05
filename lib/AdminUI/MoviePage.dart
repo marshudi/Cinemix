@@ -182,14 +182,11 @@ class _MoviePageState extends State<MoviePage> {
   }
 
   Future<void> deleteMovieFromFirebase() async {
-    // Reference to the Movie in the database
-   // DatabaseReference movieReference = FirebaseDatabase.instance.ref('Movie').child(widget.movieID);
-   //
+
     print("#####################################################");
     print("printing ID: ${widget.movieKey}");
     print("#####################################################");
-    // print('Deleting Movie: ${widget.movieID}');
-    // Remove the Movie from the database
+
     try {
       // Remove the Movie from the database
       await reference.child(widget.movieKey).remove();

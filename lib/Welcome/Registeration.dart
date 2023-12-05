@@ -34,6 +34,7 @@ class _RegisterationState extends State<Registeration> {
   bool isPasswordVisible = false;
 
 
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -259,6 +260,7 @@ class _RegisterationState extends State<Registeration> {
                                 emailValidationResult = null; // Reset the error message
                               });
                               User newUser=User(
+                                  "lib/Assets/profiles/default.jpg",
                                   fName.text,
                                   lName.text,
                                   email.text,
