@@ -3,12 +3,15 @@
 ## Project Overview
 In the contemporary era of digital entertainment, movie streaming platforms have gained immense popularity. The "Cinemix" project endeavors to create a robust movie streaming application using Flutter. This application not only facilitates user registration, login, movie browsing, and streaming but also incorporates administrative features for efficient movie library management.
 
+#
 ## Problem Statement
 The surge in demand for user-friendly movie streaming platforms, offering a diverse array of movies, coupled with the necessity for effective movie library management tools, presents a substantial challenge. Cinemix aims to address these challenges by developing a resilient and user-centric application that sustains itself through advertisements, ensuring free access for users.
 
+#
 ## Target Audience
 Cinemix is tailored for movie enthusiasts who prefer the convenience of streaming content on their mobile devices or computers. Additionally, it caters to movie administrators and content managers who require efficient tools for maintaining the movie library.
 
+#
 ## Functionalities Implemented
 1. **User Registration and Login:**
    - Users can create accounts using their email addresses and log in.
