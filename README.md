@@ -30,7 +30,7 @@ Cinemix is tailored for movie enthusiasts who prefer the convenience of streamin
 
 5. **User Profiles:**
    - User profiles with customizable avatars.
-   - Watchlist and watch history to track user preferences.
+   - Watchlist or watch history to track user preferences.
 
 6. **Admin Dashboard:**
    - Secure admin login with role-based access control.
