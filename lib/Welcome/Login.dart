@@ -4,6 +4,10 @@ import 'package:cinemix/UserUI//HomeTab.dart';
 import 'package:cinemix/BottomNav.dart';
 import 'package:cinemix/BottomNavAdmin.dart';
 
+import 'dart:convert';
+import 'dart:typed_data';
+import 'package:crypto/crypto.dart';
+
 
 
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +23,11 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
 
 
-
+  String _hashPassword(String password) {
+    final List<int> bytes = utf8.encode(password);
+    final Digest digest = sha256.convert(Uint8List.fromList(bytes));
+    return digest.toString();
+  }
 
   final _formkey = GlobalKey<FormState>();
   TextEditingController email=TextEditingController();
@@ -141,8 +149,13 @@ class _LoginState extends State<Login> {
                               for (final user in event.snapshot.children) {
                                 Map<dynamic, dynamic> u1 = user.value as Map<dynamic, dynamic>;
                                 u1['key'] = user.key;
+
+                                // Hash the entered password before comparison
+                                String hashedEnteredPassword = _hashPassword(password.text);
+
+
                                 if (u1['email'].toString().trim().compareTo(email.text.trim()) == 0 &&
-                                    u1['password'].toString().trim().compareTo(password.text.trim()) == 0) {
+                                    u1['password'].toString().trim().compareTo(hashedEnteredPassword) == 0) {
                                   flag = 1;
                                   // Directly use the user details from u1
                                   var globalUserKey = user.key as String;

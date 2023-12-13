@@ -5,9 +5,8 @@
       "firstName": "Admin",
       "lastName": "CineMix",
       "email": "admin@cinemix.com",
-      "password": "admin1234"
-      
-
+      "password": "ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270",
+      "adminPassword":"admin1234         ~ this is a coment"
     }
   },
     "Movie": {

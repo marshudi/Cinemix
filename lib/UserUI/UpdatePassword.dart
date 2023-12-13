@@ -1,4 +1,7 @@
-
+import 'dart:convert';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+import 'package:crypto/crypto.dart';
 
 import 'package:cinemix/BottomNav.dart';
 import 'package:cinemix/UserUI/ProfileTab.dart';
@@ -24,6 +27,18 @@ class UpdatePassword extends StatefulWidget {
 }
 
 class _UpdatePasswordState extends State<UpdatePassword> {
+
+
+  String _hashPassword(String password) {
+    final List<int> bytes = utf8.encode(password);
+    final Digest digest = sha256.convert(Uint8List.fromList(bytes));
+    return digest.toString();
+  }
+
+
+
+
+
   DatabaseReference userReference = FirebaseDatabase.instance.ref("User");
   TextEditingController oldPassword=TextEditingController();
   TextEditingController newPassword=TextEditingController();
@@ -31,6 +46,8 @@ class _UpdatePasswordState extends State<UpdatePassword> {
   // DatabaseReference mydb = FirebaseDatabase.instance.ref("User");
 
   // List<Map<dynamic, dynamic>> users1 = [];
+
+
 
   late int flag=0;
   bool isPasswordVisible = false;
@@ -121,7 +138,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                                 if (value == null || value.isEmpty) {
                                   return "Please Enter your Old password";
                                 }
-                                if (value !=widget.password) {
+                                if (_hashPassword(value) !=widget.password) {
                                   return "Enter your valid Old password";
                                 }
 
@@ -227,17 +244,19 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                             GestureDetector(
                               onTap: () async {
                                 if (_formkey.currentState!.validate()) {
-                                    if(oldPassword.text==widget.password){
+
+                                    if(_hashPassword(oldPassword.text)==widget.password){
                                       userReference.child(widget.userKey).update({
-                                        'password': newPassword.text,
+                                        'password': _hashPassword(newPassword.text),
                                       }).then((_) {
+                                        print(_hashPassword(newPassword.text));
                                         Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(builder: (context) => BottomNav(
                                             email: widget.email,
                                             firstName: widget.firstName,
                                             lastName: widget.lastName,
-                                            password: newPassword.text,
+                                            password: _hashPassword(newPassword.text),
                                             userKey: widget.userKey,
                                             image: widget.image,
 

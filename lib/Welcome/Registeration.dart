@@ -1,5 +1,10 @@
-import 'dart:ffi';
+import 'dart:convert';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+import 'package:crypto/crypto.dart';
 
+
+import 'package:crypto/crypto.dart';
 import 'package:cinemix/Welcome/UserModelClass.dart';
 import 'package:flutter/material.dart';
 import 'package:cinemix/Welcome/Login.dart';
@@ -16,6 +21,14 @@ class Registeration extends StatefulWidget {
 
 class _RegisterationState extends State<Registeration> {
 
+  // Function to hash the password using SHA-256
+  String _hashPassword(String password) {
+    final List<int> bytes = utf8.encode(password);
+    final Digest digest = sha256.convert(Uint8List.fromList(bytes));
+    return digest.toString();
+  }
+
+
   final _formkey = GlobalKey<FormState>();
   TextEditingController fName=TextEditingController();
   TextEditingController lName=TextEditingController();
@@ -28,12 +41,14 @@ class _RegisterationState extends State<Registeration> {
   bool checkvalue = true;
 
 
+
+
   late int flag=0;
 
   String? emailValidationResult;
   bool isPasswordVisible = false;
 
-
+  // Function to hash the password using SHA-256
 
   @override
   Widget build(BuildContext context) {
@@ -265,7 +280,7 @@ class _RegisterationState extends State<Registeration> {
                                   lName.text,
                                   email.text,
                                   //gender, //no need to conver the gender to text is already converted
-                                  password.text);
+                                _hashPassword(password.text),);
 
                               await mydb.push().set(newUser.toJson());
 
