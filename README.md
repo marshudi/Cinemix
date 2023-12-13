@@ -1,5 +1,5 @@
 # Cinemix Movie Streaming Application
-
+ 
 ## Project Overview
 In the contemporary era of digital entertainment, movie streaming platforms have gained immense popularity. The "Cinemix" project endeavors to create a robust movie streaming application using Flutter. This application not only facilitates user registration, login, movie browsing, and streaming but also incorporates administrative features for efficient movie library management.
 
@@ -30,7 +30,7 @@ Cinemix is tailored for movie enthusiasts who prefer the convenience of streamin
 
 5. **User Profiles:**
    - User profiles with customizable avatars.
-   - Watchlist and watch history to track user preferences.
+   - Watchlist or watch history to track user preferences.
 
 6. **Admin Dashboard:**
    - Secure admin login with role-based access control.
