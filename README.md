@@ -75,7 +75,12 @@ This project proposal outlines the development of the "Cinemix" movie streaming 
    - Description: Firebase is integrated into the application for various functionalities such as user authentication and real-time database.
    - Dependency: `firebase_core: ^2.10.0`
 
-6. **Flutter SDK:**
+6. **Crypto:**
+
+   - Description: Provides cryptographic operations in Flutter applications.
+   - Dependency: `crypto: ^3.0.1`
+
+7. **Flutter SDK:**
    - Description: The Flutter software development kit.
    - Dependency: `flutter: sdk: flutter`
 
