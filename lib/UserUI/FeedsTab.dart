@@ -147,6 +147,8 @@ class _FeedsTabState extends State<FeedsTab> {
     );
   }
 
+  // this formula i have got from stackoverflow
+// https://stackoverflow.com/questions/53203376/converting-datetime-to-time-ago-in-dart-flutter
   String timeAgoCustom(DateTime d) {
     Duration diff = DateTime.now().difference(d);
     if (diff.inDays > 365)

@@ -4,7 +4,13 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:cinemix/UserUI/MoviePage.dart';
 
 class SearchTab extends StatefulWidget {
-  const SearchTab({Key? key}) : super(key: key);
+  final String  userKey;
+  const SearchTab({
+    Key? key,
+
+    required this.userKey,
+
+  }) : super(key: key);
 
   @override
   State<SearchTab> createState() => _SearchTabState();
@@ -14,6 +20,7 @@ class _SearchTabState extends State<SearchTab> {
   final TextEditingController _searchController = TextEditingController();
   DatabaseReference movieRef = FirebaseDatabase.instance.ref().child("Movie");
   Query movieQuery = FirebaseDatabase.instance.ref().child("Movie");
+  DatabaseReference myDataBase = FirebaseDatabase.instance.ref("User");
   late Query filteredQuery;
   // List<Map> movies = [];
   @override
@@ -51,6 +58,8 @@ class _SearchTabState extends State<SearchTab> {
       ),
     );
   }
+
+
 
   Widget buildMovieSectionAll(String sectionTitle, Query sectionQuery) {
     return SingleChildScrollView(
@@ -145,6 +154,9 @@ class _SearchTabState extends State<SearchTab> {
     );
   }
 
+
+
+
   Widget MovieCard({required Map movie}) {
     return InkWell(
       onTap: () {
@@ -161,6 +173,7 @@ class _SearchTabState extends State<SearchTab> {
             ),
           ),
         );
+        saveUserFeeds(movie);
       },
       child: Column(
         children: <Widget>[
@@ -187,5 +200,24 @@ class _SearchTabState extends State<SearchTab> {
         ],
       ),
     );
+  }
+  void saveUserFeeds(Map movie) {
+    // myDataBase.child(widget.userKey).child("total").child("total").once().then((DataSnapshot snapshot) {
+
+
+
+    final feedJson = {
+      "image": movie["image"].toString(),
+      "movieID": movie["movieID"].toString(),
+      "movieName": movie["movieName"].toString(),
+      "genre": movie["genre"].toString(),
+      "youTubeID": movie["youTubeID"].toString(),
+      "description": movie["description"].toString(),
+      "time": DateTime.now().toIso8601String(),
+
+
+    };
+    // to save my customer order
+    myDataBase.child(widget.userKey).child("logs").push().set(feedJson);
   }
 }

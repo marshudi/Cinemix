@@ -57,7 +57,9 @@ class _HomeTabState extends State<HomeTab> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SearchTab(),
+                      builder: (context) => SearchTab(
+                          userKey: widget.userKey,
+                      ),
                     ),
                   );
                 },
