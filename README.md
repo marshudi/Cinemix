@@ -1,4 +1,7 @@
 # Cinemix Movie Streaming Application
+
+![logo](https://github.com/marshudi/Cinemix/assets/76883519/662f9ba6-dca8-4590-be8f-811c41447378)
+
  
 ## Project Overview
 In the contemporary era of digital entertainment, movie streaming platforms have gained immense popularity. The "Cinemix" project endeavors to create a robust movie streaming application using Flutter. This application not only facilitates user registration, login, movie browsing, and streaming but also incorporates administrative features for efficient movie library management.
